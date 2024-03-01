@@ -158,7 +158,25 @@ console.log("prova: ", __dirname);
 /*----------------------------------*/
 
 
-/* -- NPM ----- */
+/* -- NPM (node package manager)----- */
+
+    /* implementare pacchetti codice e frameworks di altri e  risparmiarci tempo  - ci sono 3mln di pacchetti
+    quando installiamo un pacchetto, instaliamo una cartella nel nostro progetto 
+    è importante evitare pacchetti inutili o dannosi -> verificare il numero di download per vedere
+    se va bene o no; a meno che non sia un pacchetto molto specifico*/
+
+
+    
+    /*  comandi:
+        nel terminale:
+        - npm;
+        - npm --version / npm -v;
+        - npm i / npm install nome pacchetto (installazione solo in locale sulla cartella del progetto)
+        - npm install -g nome_pacchetto (sudo al posto di npm su mac) - (installazione globale che automanticamente lo include su tutti i progetti)
+        - npm uninstall
+    */
+
+
 
 
 
