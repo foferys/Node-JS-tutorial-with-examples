@@ -177,9 +177,53 @@ console.log("prova: ", __dirname);
     */
 
 
+/* ———————————————————————————————— */
 
 
 
+/*———— FILE package.json ———————————*/ 
 
+    /* contine tutte le informazioni utili, le dipendenze ecc; file che contiene tutte le info importanti
+    - npm init;
+    - npm init -y; per crearne uno di default e poi eventualmente modificarlo a mano
 
-/* ------------- */
+    --| Installazione di una dipendenza:
+    es. -> npm i lodash |->  installa il pacchetto e inserisce le dipendenze anche nel file package json - installa node-modules con tutti i file di lodash
+    */
+    /* const _ = require('lodash'); */
+
+/*     const oggetti = [1,[2, [3, [4]]]]; //-> array bidimensionale -> array con dentro altri array
+    const oggetti2 = _.flatMapDeep(oggetti);
+    console.log(oggetti2) //-> da array multidimensionale a un array flat con lodash. */
+
+    //per installare bootstrap -> npm i bootstrap --- ecc.  
+    /* per disinstallare posso fare npm uninstall nomePacchetto
+
+    /***——quando si lavora con altri e si riceve il progetto, o lo si scarica da github, non si ha la cartella node_modules, però si ha
+    il package.json che contiene i riferimenti e facendo nel terminale npm install automaticamente va a vedere le dipendenze e installa tutto 
+    
+    --| package-lock.json 
+    definisce in modo specifico la versione installata nella nostra applicazione:
+    facendo riferimento al pacchetto bootstrap, nel file package.json abbiamo come riferimento "bootstrap": "^5.3.3" -> dove ^ indica 
+    che è dalla verisone 5.3.3 e superiore, ma se vogliamo saperlo in modo specifico dobbiamo vedere in package-lock.json
+    - versioni : 5.3.3 -> primo numero major changes, poi minor changes e poi le patch |\ quando si fa un major change rispetto alla versione che abbiamo
+    attualmento, a volte non conviene fare l'aggiornamento all'ultima perché poi il progetto potrebbe non funzionare correttamente
+    */
+
+/* –————————————————————————*/
+
+/* ——— NODEMON - pacchetto */
+    /* è un pacchetto che serve per risolvere il problema di dover fare ogni volta node index.js per vedere cosa mostrava il codice o
+    per visualizzare un console.log ecc, è un pacchetto che resta sempre in ascolto, tipo liveserver, e ogni volta che salviamo aggiorna automaticamente 
+    
+    --| installazione:
+    - 1 npm install nodemon -D || npm install nodemon --save-dev --> mettiamo -D o --save-dev per salvarlo come dash dependency
+    - 2 in package.json inseriamo lo script che deve fatto per avviare il servizio -> "start": "nodemon index.js" -> questo farà si 
+    che per avviarlo si dovrà fare npm start.
+
+    ** le devDependencies, a differenza delle dependencies che sono importante per il funzionamento dell'app sono pacchetti che
+    utilizziamo in fase di sviluppo ma non è necessario che gli altri lo utilizzino e che siano in produzione.*/
+
+    console.log("\"server\" avviato");
+
+/* —————————————————————————*/
