@@ -224,6 +224,45 @@ console.log("prova: ", __dirname);
     ** le devDependencies, a differenza delle dependencies che sono importante per il funzionamento dell'app sono pacchetti che
     utilizziamo in fase di sviluppo ma non è necessario che gli altri lo utilizzino e che siano in produzione.*/
 
-    console.log("\"server\" avviato");
+    //console.log("\"server\" avviato");
+
+/* —————————————————————————*/
+
+
+/* ——————| EVENT LOOP /single thread / async / non-bloking code |————————— */
+    // event queue -> coda degli eventi
+    // call stack -> posto in cui si tiene traccia di tutte le call back
+
+    /* abbbiamo una serie infinita di eventi che vengo registrati nella coda (event loop) nel momento in cui viene registrata la callback
+    il primo evento gestito  va nello stack e si gestisce gli altri eventi fa mettere nello stack - modo asincrono non bloccante */
+
+
+/* —————————————————————————*/
+
+/* ————EVENT EMITTERS—————*/
+    /* Programmazione orientata agli eventi: 
+    es. chat app (con socket.io)*/
+    
+    //importazione modulo events: 
+    const EventEmitter = require('events');
+    const customEmitter = new EventEmitter(); //creazione event emitter
+
+    //metodi on ed emit
+    customEmitter.on('messaggio', (nome, anno) => { /* //ci stiamo iscrivendo a questo evento (evento messaggio)-> ogni volta che parte l'evento messaggio
+        //noi siamo in ascolto dell'evento messaggio e facciamo qualcosa */
+
+        //registriamo l'evento
+        console.log(`ciao sono ${nome} e sono nell'anno ${anno}`);
+
+    }) 
+    //2 - registra solo il nome
+    customEmitter.on('messaggio', (nome) => {
+        console.log(`ciao, io sono ${nome}`);
+    }) 
+
+    // emittiamo l'evento messaggio
+    customEmitter.emit('messaggio', 'gianpiero', 2024);
+
+
 
 /* —————————————————————————*/
