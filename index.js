@@ -74,12 +74,12 @@ console.log("prova: ", __dirname);
         //creamo due costanti che contengono quello che c'è dentro require('fs')
         /* const {readFileSync, writeFileSync} = require('fs')  */
 
-        /* onst saluto = readFileSync('./cartella/saluto.txt', 'utf-8')
+        /* const saluto = readFileSync('./cartella/saluto.txt', 'utf-8')
         const ciao = readFileSync('./cartella/ciao.txt', 'utf-8') */
 
         //console.log(ciao) 
 
-        // - Leggere i file, scrivere in file (override e append con {flag:a}), creare un file:
+        // --|  Leggere i file, scrivere in file (override e append con {flag:a}), creare un file:
         /* writeFileSync('./cartella/saluto.txt', "bella") //-> scovrascrivere su un file */
 
         // - appendere su un file:
@@ -133,16 +133,16 @@ console.log("prova: ", __dirname);
         - gestire richiesta con routing e errore - navigazione tra pagine
     */
 
-
-    /* const http = require('http');
+    /* 
+    const http = require('http');
     const server = http.createServer((req, res) => {   //-> (reqEST - resPONSE)
         //res.write("Benvenuto sul nostro sito");
         //res.end();
         if(req.url === "/"){
-            res.end("benvenuto sul sito");
+            res.end(`<div>benvenuto sul sito <br> <a href="./gian">Gianpiero</a> </div>`);
         }
         else if(req.url === "/gian"){
-            res.end("sei sulla pagina fi Gian");
+            res.end(`<div>sei sulla pagina di Gian <br> torna alla <a href="/">Home</a></div>`);
         }else {
             res.end(`<h1>Errore: la pagina che stai cercando non esiste.</h1>
                         <p>torna alla
@@ -150,10 +150,10 @@ console.log("prova: ", __dirname);
                         </p>
                     </h1>`) ;
         }
-    }) 
+    })
 
     //per far si che funzioni bisogna creare un server in ascolto su una porta:
-    server.listen(3000); //col server aperto per chiuderlo devo fare ctl+c nel terminale */
+    server.listen(3000); //col server aperto per chiuderlo devo fare ctl+c nel terminale  */
 
 /*----------------------------------*/
 
@@ -248,8 +248,8 @@ console.log("prova: ", __dirname);
     const customEmitter = new EventEmitter(); //creazione event emitter
 
     //metodi on ed emit
-    customEmitter.on('messaggio', (nome, anno) => { /* //ci stiamo iscrivendo a questo evento (evento messaggio)-> ogni volta che parte l'evento messaggio
-        //noi siamo in ascolto dell'evento messaggio e facciamo qualcosa */
+    /* customEmitter.on('messaggio', (nome, anno) => { //ci stiamo iscrivendo a questo evento (evento messaggio)-> ogni volta che parte l'evento messaggio
+        //noi siamo in ascolto dell'evento messaggio e facciamo qualcosa 
 
         //registriamo l'evento
         console.log(`ciao sono ${nome} e sono nell'anno ${anno}`);
@@ -261,8 +261,49 @@ console.log("prova: ", __dirname);
     }) 
 
     // emittiamo l'evento messaggio
-    customEmitter.emit('messaggio', 'gianpiero', 2024);
+    customEmitter.emit('messaggio', 'gianpiero', 2024); */
+
+/* —————————————————————————*/
 
 
+/* ———— STREAMS —————*/
+    /* stream -> flusso costante di dati (come le live stream) che arriva finché la persona è in live
+        possiamo usarli anche per leggere file ecc -> flusso di dati costante divisi in chanck (pezzi),
+        si legge prima una parte, poi un'altra e così via...
+
+        --| creaimao file pesante e richiediamolo
+    */
+   //--|passo 1
+   /* const {writeFileSync} = require('fs');
+   for(let i=0; i<10000; i++ ) {
+       //creiamo il file e dentro mettiamo la frase con l'indice e lo appendiamo con flag
+       writeFileSync('./filegrande.txt', `ciao riga numero ${i}\n`, {flag: 'a'});
+    } */
+
+    //--|passo 2
+    /* leggiamo il file */
+    /* const {readFileSync, writeFileSync} = require('fs');
+    const filegrande = readFileSync('./filegrande.txt');
+    
+    console.log(filegrande); //-> mostra la dimensione del file in un buffer unico */
+    
+    //--|passo 3
+    /* const {createReadStream, readFileSync, writeFileSync} = require('fs');
+    const stream = createReadStream('./filegrande.txt');
+
+    //utilizzo l'evento on -- data è un nome univoco, result che è il parametro degli eventi richiesti
+    stream.on('data', (result) =>{
+        console.log(result); // ->> 3 buffer diversi, il file viene diviso in chunck, che è che averne solo uno.
+    }) */
+
+    /* abbiamo usato createReadStream() per leggere il file (possiamo farlo anche per scrivere o entrambi insieme) 
+    e abbiamo visto che usano gli eventi e i file vengono passati in diversi chunk
+    */
+
+/* —————————————————————————*/
+
+/* —————RICHIESTE HTTP ———————*/
+
+    /* COME funziona il web */
 
 /* —————————————————————————*/
